@@ -25,9 +25,6 @@ services:
     depends_on:
       - db
 
-    networks:
-      - nginx_proxy_manager_default
-
   db:
     image: 'jc21/mariadb-aria:latest'
     restart: unless-stopped
@@ -39,11 +36,3 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - ./mysql:/var/lib/mysql
-
-    networks:
-      - nginx_proxy_manager_default
-
-
-networks:
-  nginx_proxy_manager_default:
-    external: true
